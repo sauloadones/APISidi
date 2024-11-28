@@ -9,7 +9,10 @@ const userController = new UserController(
     new UserService.CreateUserService(),
 );
 
-userRoutes.post('/', async (req, res, next) => {
+
+
+
+userRoutes.post('/create', async (req, res, next) => {
     try {
         await userController.create(req, res);
     } catch (error) {

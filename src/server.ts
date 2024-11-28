@@ -18,14 +18,6 @@ app.use(express.json());
 
 app.use('/', routes);
 
-app.use((err, req, res, next) => {
-  if (err instanceof AppError) {
-      return res.status(err.statusCode).json({ message: err.message });
-  }
-
-  console.error('Unexpected error:', err);
-  return res.status(500).json({ message: 'Internal Server Error' });
-});
 
 app.use(errors());
 
