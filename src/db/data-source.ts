@@ -2,6 +2,7 @@ import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 import dotevn from 'dotenv'
 import User from '../modules/User/entity/Entities'
+import CheckIn from '../modules/CheckIn/entity/CheckInEntity'
 dotevn.config()
 
 const port = parseInt(process.env.DB_PORT || '1433', 10)
@@ -15,7 +16,7 @@ const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
     synchronize: true,
     logging: true,
-    entities: [User],
+    entities: [User, CheckIn],
     migrations: ['src/db/migration/*.ts'],
     subscribers: [],
     extra: {

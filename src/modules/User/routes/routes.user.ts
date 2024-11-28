@@ -11,6 +11,7 @@ const userController = new UserController(
 
 
 
+
 userRoutes.post('/', async (req, res, next) => {
     try {
         await userController.create(req, res);
@@ -18,5 +19,6 @@ userRoutes.post('/', async (req, res, next) => {
         next(error); // Ensure any errors are passed to the error handling middleware
     }
 });
+
 
 export default userRoutes;
