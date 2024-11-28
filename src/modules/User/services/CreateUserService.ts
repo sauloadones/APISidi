@@ -13,10 +13,7 @@ class CreateUserService {
         console.log(password)
         console.log(comfirmPassword)
 
-
-
         const hashed = await encrypt(password)
-        
         const newUser = new User();
         newUser.email = email
         newUser.name = name
@@ -30,9 +27,7 @@ class CreateUserService {
             throw new AppError('Esse email ja existe', 409)
         }
 
-
         await userRepository.save(newUser)
-        
         return newUser
     }
 }

@@ -19,7 +19,7 @@ export default class User implements IUser {
 
     @CreateDateColumn({ type: 'datetime' })
     createdAt!: Date;
- 
+
     @DeleteDateColumn({ type: 'datetime', nullable: true })
     deletedAt!: Date | null;
 

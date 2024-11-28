@@ -21,7 +21,6 @@ export class UserController {
             }
 
             const newUser = await this.createUserService.createUser(req.body);
-
             return res.status(201).json(newUser);  
 
         } catch (error: unknown) {

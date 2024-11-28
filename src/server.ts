@@ -12,14 +12,20 @@ const app = express()
 
 app.use(cors());
 
-
 app.use(cors());
 
 app.use(express.json());
 
 app.use('/', routes);
 
-app.use((err: any, req: Request, res: Response, next: NextFunction) => { if (res.headersSent) { return next(err); } res.status(err.statusCode || 500).json({ message: err.message || 'Internal Server Error' }); });
+app.use((err, req, res, next) => {
+  if (err instanceof AppError) {
+      return res.status(err.statusCode).json({ message: err.message });
+  }
+
+  console.error('Unexpected error:', err);
+  return res.status(500).json({ message: 'Internal Server Error' });
+});
 
 app.use(errors());
 

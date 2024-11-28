@@ -9,9 +9,10 @@ const createLoginValidator =  Joi.object({
         }),
     password: Joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
-        .required(),
-   
-        
+        .required()
+        .messages({
+            "string.pattern.base": `Invalid pasword`,
+        }),
 }) 
 
 export default createLoginValidator

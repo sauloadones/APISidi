@@ -4,15 +4,13 @@ import User from '../../User/entity/Entities'
 import createLoginValidator from '../../User/validator/LoginUserValidator'
 import LoginService from '../service/LoginService'
 import AppError from '../../../shared/errors/AppError'
+
 export class LoginController {
-  
-        userRepository = AppDataSource.getRepository(User)
+
+    userRepository = AppDataSource.getRepository(User)
     constructor(
         private loginUserService: LoginService,
-
     ){}
-
-    
 
     login = async (req: Request, res: Response): Promise<void> => {
         try {
@@ -34,8 +32,7 @@ export class LoginController {
                 res.status(409).json({ message: error.message }); 
             } else { 
                 console.error('Unexpected error:', error); 
-                res.status(500).json({ message: error}); } 
+                res.status(error.statusCode).json({ message: error}); } 
             }
-
     }
 }
