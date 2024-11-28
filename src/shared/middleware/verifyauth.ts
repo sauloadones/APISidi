@@ -2,47 +2,48 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import AppError from '../errors/AppError';
-import auth from '../../config/auth';
+import authConfig from '../../config/auth';
 
 interface ITokenPayload {
-  iat: number;
-  exp: number;
-  email: string;
+    iat: number;
+    exp: number;
+    email: string;
 }
 
 interface CustomRequest extends Request {
-  user?: {
-    email: string;
-  };
+    user?: {
+        email: string;
+    };
 }
 
 export const authMiddleware = (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction,
+    req: CustomRequest,
+    res: Response,
+    next: NextFunction,
 ): void => {
-  const { authorization } = req.headers;
-  console.log('Authorization Header:', authorization);
+    const { authorization } = req.headers;
+    console.log('Authorization Header:', authorization);
 
-  if (!authorization || !authorization.startsWith('Bearer ')) {
-    return next(new AppError('JWT token is missing or malformed', 401));
-  }
+    if (!authorization || !authorization.startsWith('Bearer ')) {
+        return next(new AppError('JWT token is missing or malformed', 401));
+    }
 
-  const token = authorization.split(' ')[1];
-  console.log('Extracted Token:', token);
+    const token = authorization.split(' ')[1];
+    console.log('Extracted Token:', token);
 
-  try {
-    const decoded = jwt.verify(token, auth.jwt.secret) as ITokenPayload;
-    console.log('Decoded Token:', decoded);
+    try {
+        const decoded = jwt.verify(token, authConfig.jwt.secret) as ITokenPayload;
+        console.log('Decoded Token:', decoded);
 
-    req.user = {
-      email: decoded.email,
-    };
+        req.user = {
+            email: decoded.email,
+        };
 
-    return next();
-  } catch (err) {
-    console.error('Token Verification Error:', err);
-    return next(new AppError('Invalid JWT token', 401));
-  }
+        return next();
+    } catch (err) {
+        console.error('Token Verification Error:', err);
+        return next(new AppError('Invalid JWT token', 401));
+    }
 };
+
 

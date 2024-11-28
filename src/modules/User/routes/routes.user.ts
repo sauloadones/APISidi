@@ -12,7 +12,7 @@ const userController = new UserController(
 
 
 
-userRoutes.post('/', async (req, res, next) => {
+userRoutes.post('/create', async (req, res, next) => {
     try {
         await userController.create(req, res);
     } catch (error) {
