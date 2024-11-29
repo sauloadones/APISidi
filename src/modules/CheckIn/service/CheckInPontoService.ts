@@ -3,10 +3,10 @@ import baterponto from '../entity/baterponto';
 import AppDataSource from "../../../db/data-source";
 
 class CheckInPontoService {
-    async createCheckIn(baterpontoData: baterponto, id: string): Promise<baterponto> {
+    async createCheckIn(baterpontoData: baterponto, userId: string): Promise<baterponto> {
         const baterpontoRepository = AppDataSource.getRepository(baterponto);
 
-        baterpontoData.userId = id
+        baterpontoData.userId = userId
         baterpontoData.checkInData = formatDateToPTBR(new Date());
         baterpontoData.checkOutData = ''
         baterpontoData.intervalEntradaData = '1'

@@ -22,7 +22,8 @@ class CheckInController {
 
     createCheckIn = async (req: Request, res: Response): Promise<void> => {
         try {
-            const { userId } = req.params
+            const { id: userId } = req.params
+            console.log(userId)
             const checkIn = await this.checkInPontoService.createCheckIn(req.body, userId);
             res.status(201).json(checkIn);
         } catch (error) {

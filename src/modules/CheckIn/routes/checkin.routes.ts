@@ -5,7 +5,7 @@ import AppError from '../../../shared/errors/AppError';
 const checkInController = new CheckInController();
 const checkInRoutes = Router();
 
-checkInRoutes.post('/checkin', async (req, res) => {
+checkInRoutes.post('/checkin/:id', async (req, res) => {
     try {
         await checkInController.createCheckIn(req, res);
     } catch (error) {
