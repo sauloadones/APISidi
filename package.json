@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/app.ts",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "migration:create": "npm run typeorm migration:create",
     "migration:generate": "ts-node ./node_modules/typeorm/cli.js -d ./src/db/data-source.ts migration:generate ./src/db/migration/default",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js -d ./src/db/data-source.ts migration:run",
-    "start": "ts-node-dev src/server.ts",
+    
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
