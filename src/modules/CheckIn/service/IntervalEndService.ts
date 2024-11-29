@@ -3,23 +3,23 @@ import baterponto from '../entity/baterponto';
 import AppError from '../../../shared/errors/AppError';
 import { formatDateToPTBR, formatDateTimeToBrazilTimeZone } from '../../User/validator/baterPontoValidator';
 
-class CheckOutService {
+class intervalFinalService {
 
 
-    async updateCheckOut(id: number): Promise<baterponto> {
+    async updateIntervalEnd(id: number): Promise<baterponto> {
         const baterpontoRepository = AppDataSource.getRepository(baterponto);
-        const baterPonto = await baterpontoRepository.findOne({ where: { id }});
+        const baterPonto = await baterpontoRepository.findOne({ where: { id }, relations: ['user'] });
 
         if (!baterPonto) {
             throw new AppError('CheckIn not found', 404);
         }
 
-        baterPonto.checkOutData = formatDateToPTBR(new Date());
-        baterPonto.checkOutHorario = formatDateTimeToBrazilTimeZone(new Date());
+        baterPonto.intervalSaidaData = formatDateToPTBR(new Date());
+        baterPonto.intervalSaidaData = formatDateTimeToBrazilTimeZone(new Date());
 
         await baterpontoRepository.save(baterPonto);
         return baterPonto;
     }
 }
 
-export default CheckOutService;
+export default intervalFinalService;

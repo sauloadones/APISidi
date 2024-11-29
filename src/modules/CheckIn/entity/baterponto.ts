@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreatestringColumn } from 'typeorm';
-import User from '../../User/entity/Entities'; 
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+
 
 @Entity('baterponto')
 class baterponto {
@@ -7,11 +7,9 @@ class baterponto {
     id!: number;
 
     @Column()
-    userId!: number;
+    userId!: string;
 
-    @ManyToOne(() => User)
-    @JoinColumn({ name: 'userId' })
-    user!: User;
+   
 
     @Column()
     checkInHorario!: string;

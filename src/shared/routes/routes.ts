@@ -13,6 +13,6 @@ const routes = Router();
 routes.use('/login', loginRoutes)
 
 routes.use('/user', userRoutes);
-routes.use('/checkin', authMiddleware, checkInRoutes)
+routes.use('/bp', authMiddleware, checkInRoutes)
 routes.use('/reset', authMiddleware, passwordRoutes)
 export default routes;

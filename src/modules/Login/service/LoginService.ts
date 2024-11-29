@@ -7,7 +7,7 @@ import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 class LoginService {
-    login = async (loginData: ILoginService): Promise<{token: string, username: string}> => {
+    login = async (loginData: ILoginService): Promise<{token: string, username: string, id: string}> => {
         const userRepository = AppDataSource.getRepository(User);
         const { email, password } = loginData;
 
@@ -31,7 +31,7 @@ class LoginService {
             { expiresIn: authConfig.jwt.expiresIn }
         );
 
-        return { token, username: existingUser.name};
+        return { token, username: existingUser.name, id: existingUser.id};
     }
 }
 

@@ -5,20 +5,46 @@ import AppError from '../../../shared/errors/AppError';
 const checkInController = new CheckInController();
 const checkInRoutes = Router();
 
-checkInRoutes.post('/', async (req, res) => {
+checkInRoutes.post('/checkin', async (req, res) => {
     try {
         await checkInController.createCheckIn(req, res);
     } catch (error) {
-        throw new AppError(`${error}`, 500);  // Pass errors to the error-handling middleware
+        throw new AppError(`${error}`, 500);  
     }
 });
 
-checkInRoutes.get('/', async (req, res) => {
+checkInRoutes.patch('/checkout/:id', async (req, res) => {
     try {
-        await checkInController.getCheckIns(req, res);
+        await checkInController.updateCheckOut(req, res);
     } catch (error) {
-        throw new AppError(`${error}`, 500);  // Pass errors to the error-handling middleware
+        throw new AppError(`${error}`, 500);  
     }
 });
+
+checkInRoutes.patch('/is', async (req, res) => {
+    try {
+        await checkInController.updateIntervalEntrada(req, res);
+    } catch (error) {
+        throw new AppError(`${error}`, 500);  
+    }
+});
+
+checkInRoutes.patch('/ie', async (req, res) => {
+    try {
+        await checkInController.updateIntervalFinal(req, res);
+    } catch (error) {
+        throw new AppError(`${error}`, 500);  
+    }
+});
+
+checkInRoutes.get('/:id', async (req, res) => {
+    try {
+        await checkInController.getCheckInByUserId(req, res);
+    } catch (error) {
+        throw new AppError(`${error}`, 500);  
+    }
+});
+
+
 
 export default checkInRoutes;
