@@ -9,12 +9,12 @@ class CheckInPontoService {
         baterpontoData.userId = userId
         baterpontoData.checkInData = formatDateToPTBR(new Date());
         baterpontoData.checkOutData = ''
-        baterpontoData.intervalEntradaData = '1'
-        baterpontoData.intervalSaidaData = '1'
+        baterpontoData.intervalEntradaData = ''
+        baterpontoData.intervalSaidaData = ''
         baterpontoData.checkInHorario = formatDateTimeToBrazilTimeZone(new Date())
-        baterpontoData.checkOutHorario = '1'
-        baterpontoData.intervalEntradaHorario = '1'
-        baterpontoData.intervalSaidaHorario = '1'
+        baterpontoData.checkOutHorario = ''
+        baterpontoData.intervalEntradaHorario = ''
+        baterpontoData.intervalSaidaHorario = ''
 
         const newBaterPonto = baterpontoRepository.create(baterpontoData);
         await baterpontoRepository.save(newBaterPonto);
