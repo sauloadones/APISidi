@@ -2,11 +2,9 @@ module.exports = {
   apps: [
     {
       name: "my-api",
-      script: "./dist/server.js",
+      script: "./src/server.ts",
       interpreter: "ts-node",
-      env: {
-        NODE_ENV: "production"
-      }
+      watch: true
     }
   ]
 };

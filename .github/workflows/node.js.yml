@@ -25,10 +25,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
+
     - run: npm install
     - run: npm install -g typescript
     - run: npm run migration:run
     - run: tsc
     - run: pm2 restart ecosystem.config.js
-

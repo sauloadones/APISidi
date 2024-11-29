@@ -90,7 +90,7 @@ class CheckInController {
     }
     getCheckInByUserId = async (req: Request, res: Response): Promise<void> => {
         try {
-            const { userId } = req.params;
+            const {id: userId } = req.params;
             const checkIns = await this.getCheckInById.getCheckInByUserId(userId)
             res.status(200).json(checkIns)
         }catch (error) {
