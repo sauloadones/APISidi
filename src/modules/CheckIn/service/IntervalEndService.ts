@@ -15,7 +15,7 @@ class intervalFinalService {
         }
 
         baterPonto.intervalSaidaData = formatDateToPTBR(new Date());
-        baterPonto.intervalSaidaData = formatDateTimeToBrazilTimeZone(new Date());
+        baterPonto.intervalSaidaHorario= formatDateTimeToBrazilTimeZone(new Date());
 
         await baterpontoRepository.save(baterPonto);
         return baterPonto;
