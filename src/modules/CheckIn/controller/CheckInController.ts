@@ -1,52 +1,64 @@
-import { Request, Response} from 'express';
-import AppDataSource from '../../../db/data-source';
-import CheckIn from '../entity/CheckInEntity';
-import User from '../../User/entity/Entities';
+import { Request, Response, NextFunction } from 'express';
+import CheckInPontoService from '../service/CheckInPontoService';
+import Check
 import AppError from '../../../shared/errors/AppError';
 
 class CheckInController {
-    createCheckIn = async (req: Request, res: Response): Promise<Response> => {
+    private checkInPontoService: CheckInPontoService;
+    private checkOutService: CheckOutService;
+
+    constructor() {
+        this.checkInService = new CheckInService();
+    }
+
+    createCheckIn = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
-            const { userId } = req.body;
-
-            if (!userId) {
-                return res.status(400).json({ message: 'User ID is required' });
-            }
-
-            const userRepository = AppDataSource.getRepository(User);
-            const user = await userRepository.findOne({ where: { id: userId } });
-
-            if (!user) {
-                return res.status(404).json({ message: 'User not found' });
-            }
-
-            const checkInRepository = AppDataSource.getRepository(CheckIn);
-
-            const newCheckIn = checkInRepository.create({
-                userId,
-                user,
-                timestamp: new Date(),
-            });
-
-            await checkInRepository.save(newCheckIn);
-
-            return res.status(201).json(newCheckIn);
+            const checkIn = await this.checkInService.createCheckIn(req.body);
+            res.status(201).json(checkIn);
         } catch (error) {
-            throw new AppError(`Error registering check-in ${error}`, 500);
+            if (error instanceof AppError) {
+                res.status(error.statusCode).json({ message: error.message });
+            } else {
+                res.status(500).json({ message: 'An unexpected error occurred' });
+            }
         }
-    };
+    }
 
-    getCheckIns = async (req: Request, res: Response): Promise<Response> => {
+    getCheckInById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
-            const checkInRepository = AppDataSource.getRepository(CheckIn);
-
-            const checkIns = await checkInRepository.find({ relations: ['user'] });
-
-            return res.status(200).json(checkIns);
+            const { id } = req.params;
+            const checkIn = await this.checkInService.getCheckInById(Number(id));
+            res.status(200).json(checkIn);
         } catch (error) {
-            throw new AppError(`Error fetching check-ins ${error}`, 500);
+            if (error instanceof AppError) {
+                res.status(error.statusCode).json({ message: error.message });
+            } else {
+                res.status(500).json({ message: 'An unexpected error occurred' });
+            }
         }
-    };
+    }
+
+    updateCheckOut = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        try {
+            const { id } = req.params;
+            const checkOutData = req.body;
+            const updatedCheckIn = await this.checkInService.updateCheckOut(Number(id), checkOutData);
+            res.status(200).json(updatedCheckIn);
+        } catch (error) {
+            if (error instanceof AppError) {
+                res.status(error.statusCode).json({ message: error.message });
+            } else {
+                res.status(500).json({ message: 'An unexpected error occurred' });
+            }
+        }
+    }
 }
 
 export default CheckInController;
+
+
+export default CheckInController;
+
+
+
+
