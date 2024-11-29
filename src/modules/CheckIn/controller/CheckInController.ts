@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import CheckInPontoService from '../service/CheckInPontoService';
 
 import AppError from '../../../shared/errors/AppError';
@@ -35,19 +35,7 @@ class CheckInController {
         }
     }
 
-    // getCheckInById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    //     try {
-    //         const { id } = req.body;
-    //         const checkIn = await this.checkInPontoService(Number(id));
-    //         res.status(200).json(checkIn);
-    //     } catch (error) {
-    //         if (error instanceof AppError) {
-    //             res.status(error.statusCode).json({ message: error.message });
-    //         } else {
-    //             res.status(500).json({ message: 'An unexpected error occurred' });
-    //         }
-    //     }
-    // }
+ 
 
     updateCheckOut = async (req: Request, res: Response): Promise<void> => {
         try {

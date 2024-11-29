@@ -1,15 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column} from 'typeorm';
 
 
 @Entity('baterponto')
-class baterponto {
+class Baterponto {
     @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()
     userId!: string;
-
-   
 
     @Column()
     checkInHorario!: string;
@@ -36,5 +34,5 @@ class baterponto {
     intervalSaidaHorario!: string;
 }
 
-export default baterponto;
+export default Baterponto;
 
