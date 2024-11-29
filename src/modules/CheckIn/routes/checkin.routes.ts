@@ -21,7 +21,7 @@ checkInRoutes.patch('/checkout/:id', async (req, res) => {
     }
 });
 
-checkInRoutes.patch('/is', async (req, res) => {
+checkInRoutes.patch('/is/:id', async (req, res) => {
     try {
         await checkInController.updateIntervalEntrada(req, res);
     } catch (error) {
@@ -29,7 +29,7 @@ checkInRoutes.patch('/is', async (req, res) => {
     }
 });
 
-checkInRoutes.patch('/ie', async (req, res) => {
+checkInRoutes.patch('/ie/:id', async (req, res) => {
     try {
         await checkInController.updateIntervalFinal(req, res);
     } catch (error) {
