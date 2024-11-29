@@ -8,7 +8,7 @@ class intervalInicioService {
 
     async updateIntervalStart(id: number): Promise<baterponto> {
         const baterpontoRepository = AppDataSource.getRepository(baterponto);
-        const baterPonto = await baterpontoRepository.findOne({ where: { id }, relations: ['user'] });
+        const baterPonto = await baterpontoRepository.findOne({ where: { id }});
 
         if (!baterPonto) {
             throw new AppError('CheckIn not found', 404);
