@@ -13,10 +13,11 @@ const AppError_1 = __importDefault(require("./shared/errors/AppError"));
 const routes_1 = __importDefault(require("./shared/routes/routes"));
 const fs_1 = __importDefault(require("fs"));
 const https_1 = __importDefault(require("https"));
+const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 const options = {
-    key: fs_1.default.readFileSync('./private.key'),
-    cert: fs_1.default.readFileSync('./certificate.crt')
+    key: fs_1.default.readFileSync(path_1.default.resolve(__dirname, 'private.key')),
+    cert: fs_1.default.readFileSync(path_1.default.resolve(__dirname, 'certificate.crt'))
 };
 app.use((0, cors_1.default)({
     origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'
