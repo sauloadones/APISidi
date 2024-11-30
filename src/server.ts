@@ -14,7 +14,7 @@ const app = express();
 app.options('*', cors())
 
 app.use(cors({
-  origin: 'https://pontosidi.netlify.app/', // Allow only this origin
+  origin: 'https://pontosidi.netlify.app', // Allow only this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
   credentials: true, // Allow credentials (cookies, etc.)
