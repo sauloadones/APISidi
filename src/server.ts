@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors
   ({
-    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app'
+    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'
   }));
 
 
