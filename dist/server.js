@@ -12,8 +12,12 @@ const celebrate_1 = require("celebrate");
 const AppError_1 = __importDefault(require("./shared/errors/AppError"));
 const routes_1 = __importDefault(require("./shared/routes/routes"));
 const app = (0, express_1.default)();
+app.options('*', (0, cors_1.default)());
 app.use((0, cors_1.default)({
-    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'
+    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app', // Allow only this origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true, // Allow credentials (cookies, etc.)
 }));
 app.use(express_1.default.json());
 app.use('/', routes_1.default);

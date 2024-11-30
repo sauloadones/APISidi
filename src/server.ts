@@ -10,7 +10,8 @@ import routes from './shared/routes/routes';
 
 const app = express();
 
-const cors = require('cors');
+
+app.options('*', cors())
 
 app.use(cors({
   origin: 'https://stunning-gingersnap-bdc1f0.netlify.app', // Allow only this origin
