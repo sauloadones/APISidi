@@ -7,16 +7,8 @@ import { errors } from 'celebrate';
 import AppError from './shared/errors/AppError';
 import { Request, Response, NextFunction } from 'express';
 import routes from './shared/routes/routes';
-import fs from 'fs'
-import https from 'https'
-import path from 'path'
+
 const app = express();
-
-const options = {
-  key: fs.readFileSync(path.resolve(__dirname, 'private.key')),
-  cert: fs.readFileSync(path.resolve(__dirname, 'certificate.crt'))
-
-}
 
 app.use(cors
   ({
@@ -53,7 +45,7 @@ AppDataSource.initialize()
     console.log('Connected to the Database');
 
     const port = process.env.PORT || 3000;  // Use port from .env or fallback to 3000
-    https.createServer(options, app).listen(443, () => {
+    app.listen(port, () => {
       console.log(`Server is listening on port ${port}`);
     });
   })

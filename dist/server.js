@@ -11,14 +11,7 @@ const data_source_1 = __importDefault(require("./db/data-source"));
 const celebrate_1 = require("celebrate");
 const AppError_1 = __importDefault(require("./shared/errors/AppError"));
 const routes_1 = __importDefault(require("./shared/routes/routes"));
-const fs_1 = __importDefault(require("fs"));
-const https_1 = __importDefault(require("https"));
-const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
-const options = {
-    key: fs_1.default.readFileSync(path_1.default.resolve(__dirname, 'private.key')),
-    cert: fs_1.default.readFileSync(path_1.default.resolve(__dirname, 'certificate.crt'))
-};
 app.use((0, cors_1.default)({
     origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'
 }));
@@ -44,7 +37,7 @@ data_source_1.default.initialize()
     .then(() => {
     console.log('Connected to the Database');
     const port = process.env.PORT || 3000; // Use port from .env or fallback to 3000
-    https_1.default.createServer(options, app).listen(443, () => {
+    app.listen(port, () => {
         console.log(`Server is listening on port ${port}`);
     });
 })
