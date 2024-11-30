@@ -10,10 +10,15 @@ import routes from './shared/routes/routes';
 
 const app = express();
 
-app.use(cors
-  ({
-    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'
-  }));
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://stunning-gingersnap-bdc1f0.netlify.app', // Allow only this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  credentials: true, // Allow credentials (cookies, etc.)
+}));
+
 
 
 app.use(express.json());
