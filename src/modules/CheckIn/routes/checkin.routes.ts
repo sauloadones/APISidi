@@ -37,7 +37,7 @@ checkInRoutes.patch('/ie/:id', async (req, res) => {
     }
 });
 
-checkInRoutes.get('/:id', async (req, res) => {
+checkInRoutes.post('/:id', async (req, res) => {
     try {
         await checkInController.getCheckInByUserId(req, res);
     } catch (error) {

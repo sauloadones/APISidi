@@ -49,7 +49,7 @@ checkInRoutes.patch('/ie/:id', (req, res) => __awaiter(void 0, void 0, void 0, f
         throw new AppError_1.default(`${error}`, 500);
     }
 }));
-checkInRoutes.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+checkInRoutes.post('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield checkInController.getCheckInByUserId(req, res);
     }
