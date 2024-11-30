@@ -16,8 +16,7 @@
   "keywords": [],
   "contributors": [],
   "repository": {},
-  "license": "ISC",
-  "description": "API for Car Rental Management: This API facilitates the management of car rentals. It allows for user management, customer registration, control of available cars for rent, and the creation and tracking of rental orders.",
+  "license": "ISC", 
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",

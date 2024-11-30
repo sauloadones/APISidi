@@ -22,12 +22,12 @@ class CheckInPontoService {
             baterpontoData.userId = userId;
             baterpontoData.checkInData = (0, baterPontoValidator_1.formatDateToPTBR)(new Date());
             baterpontoData.checkOutData = '';
-            baterpontoData.intervalEntradaData = '1';
-            baterpontoData.intervalSaidaData = '1';
+            baterpontoData.intervalEntradaData = '';
+            baterpontoData.intervalSaidaData = '';
             baterpontoData.checkInHorario = (0, baterPontoValidator_1.formatDateTimeToBrazilTimeZone)(new Date());
-            baterpontoData.checkOutHorario = '1';
-            baterpontoData.intervalEntradaHorario = '1';
-            baterpontoData.intervalSaidaHorario = '1';
+            baterpontoData.checkOutHorario = '';
+            baterpontoData.intervalEntradaHorario = '';
+            baterpontoData.intervalSaidaHorario = '';
             const newBaterPonto = baterpontoRepository.create(baterpontoData);
             yield baterpontoRepository.save(newBaterPonto);
             return newBaterPonto;
