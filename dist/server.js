@@ -15,8 +15,8 @@ const fs_1 = __importDefault(require("fs"));
 const https_1 = __importDefault(require("https"));
 const app = (0, express_1.default)();
 const options = {
-    key: fs_1.default.readFileSync('private.key'),
-    cert: fs_1.default.readFileSync('certificate.crt')
+    key: fs_1.default.readFileSync('./private.key'),
+    cert: fs_1.default.readFileSync('./certificate.crt')
 };
 app.use((0, cors_1.default)({
     origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'

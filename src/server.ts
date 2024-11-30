@@ -13,8 +13,8 @@ import https from 'https'
 const app = express();
 
 const options = {
-  key: fs.readFileSync('private.key'),
-  cert: fs.readFileSync('certificate.crt')
+  key: fs.readFileSync('./private.key'),
+  cert: fs.readFileSync('./certificate.crt')
 
 }
 
