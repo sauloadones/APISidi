@@ -13,7 +13,7 @@ const AppError_1 = __importDefault(require("./shared/errors/AppError"));
 const routes_1 = __importDefault(require("./shared/routes/routes"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app'
+    origin: 'https://stunning-gingersnap-bdc1f0.netlify.app/'
 }));
 app.use(express_1.default.json());
 app.use('/', routes_1.default);

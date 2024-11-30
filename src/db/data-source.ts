@@ -17,7 +17,7 @@ const AppDataSource = new DataSource({
     synchronize: true,
     logging: true,
     entities: [User, baterponto],
-    migrations: ['src/db/migration/*.ts'],
+    migrations: ['dist/db/migration/*.js'],
     subscribers: [],
     extra: {
         trustServerCertificate: true, 

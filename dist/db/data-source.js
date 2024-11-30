@@ -20,7 +20,7 @@ const AppDataSource = new typeorm_1.DataSource({
     synchronize: true,
     logging: true,
     entities: [Entities_1.default, baterponto_1.default],
-    migrations: ['dist/db/migration/*.js'],
+    migrations: ['src/db/migration/*.ts'],
     subscribers: [],
     extra: {
         trustServerCertificate: true,
